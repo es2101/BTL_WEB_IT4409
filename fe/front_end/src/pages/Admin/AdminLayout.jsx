@@ -1,6 +1,6 @@
 import Sidebar from "./Sidebar.jsx";
 import { Outlet } from "react-router-dom";
-import "./Adminlayout.css";
+import "./AdminLayout.css";
 
 export default function AdminLayout() {
   return (
