@@ -70,8 +70,16 @@ const Payment = () => {
     }
 
     const handleSepaySuccess = () => {
-        alert("Thanh toán SePay thành công! Cảm ơn bạn đã mua sắm.");
-        navigate('/my-orders');
+        try {
+            confirmPayment(orderData._id || orderData.id);
+            clearCart();
+            alert("Thanh toán SePay thành công! Cảm ơn bạn đã mua sắm.");
+            navigate('/my-orders');
+        } catch (err) {
+            console.error(err);
+            alert("Thanh toán thành công nhưng có lỗi khi cập nhật trạng thái. Vui lòng kiểm tra lại đơn hàng.");
+            navigate('/my-orders');
+        }
     }
 
     if (!orderData) return <div className="p-8 text-center">Đang tải thông tin...</div>;
